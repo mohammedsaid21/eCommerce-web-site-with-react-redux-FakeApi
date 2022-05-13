@@ -1,26 +1,19 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-// import { data } from '../../assets/DataNewDevices'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { addProductToCart } from '../../redux/productSlice'
+import { addProductToCart, getNewDevices } from '../../redux/productSlice'
 
 
-const NewDevices = ({ newDevices }) => {
+const NewDevices = () => {
 
-  // const getNewDevicees = async () => {
-  // try {
-  // const res = await fetch("https://fakestoreapi.com/products");
-  // const data = await res.json();
-  // const info =  data.filter(product => product.catogray === 'newDevices')
-  // setData(info)
-  // console.log(data.map((idd) => (console.log(idd.image))))
-  // return data;
-  // } catch (error) {
-  // return (error.message);
-  // }
-  // }
-
+  const { sallersProducts } = useSelector(state => state.productSlice)
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getNewDevices()) 
+  }, [dispatch])
+  
+  console.log(sallersProducts)
 
   const handleBuy = (e) => {
     let co = 0
@@ -75,11 +68,11 @@ const NewDevices = ({ newDevices }) => {
         </div>
         {/*  Start Items  */}
         <div className="flex border-t-2 pt-6 pb-4">
-          <div className='flex flex-wrap'>
-            {newDevices.length > 0 ?
-              newDevices.map((item, i) => (
+          <div className='flex flex-wrap w-full'>
+            {sallersProducts.length > 0 ?
+              sallersProducts.map((item, i) => (
                 <div key={i} className='flex flex-col items-center justify-between h-[%] flex-wrap w-1/2 md:w-1/4 pt-10 border-l-2 px-2 hover-item mt-2 border-b-2'>
-                  <img onClick={() => openModal(item)} className='w-32 h-32 object-fit cursor-pointer' src={`${item.imgSrc}`} alt='' />
+                  <img onClick={() => openModal(item)} className='w-32 h-32 object-fit cursor-pointer' src={item.imgSrc} alt='' />
                   <p className='py-5'>{item.title}</p>
                   <h5>${item.price}</h5>
                   <button onClick={() => handleBuy(item)} className='bg-[#0e8ce4] hover:bg-blue-400 cursor-pointer w-full text-2xl text-white rounded-md py-2 mt-4'>Add To Cart</button>

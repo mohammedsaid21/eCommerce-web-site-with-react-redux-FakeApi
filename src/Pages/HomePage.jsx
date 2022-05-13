@@ -10,19 +10,7 @@ import { getProducts } from '../redux/productSlice'
 import { motion } from "framer-motion"
 
 const HomePage = () => {
-  const { products } = useSelector(state => state.productSlice)
-  const dispatch = useDispatch()
 
-  const addItem = products.map((item) => (
-      item.title
-  ))
-
-  useEffect(() => {
-    dispatch(getProducts(addItem))
-  }, [dispatch])
-
-  const newDevices = products.filter(product1 => product1.category === "newDevices")
-  const hotSallers = products.filter(product1 => product1.category === "HotSallers")
 
   return (
     <motion.div
@@ -36,11 +24,11 @@ const HomePage = () => {
       {/* End */}
       <SliderSaller />
       {/*  */}
-      <NewDevices newDevices={newDevices} />
+      <NewDevices />
 
       {/* <OrederNew /> */}
 
-      <HotSallers hotSallers={hotSallers} />
+      <HotSallers />
 
       <Types />
       {/*  */}

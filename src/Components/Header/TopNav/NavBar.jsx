@@ -83,7 +83,7 @@ const NavBar = () => {
           <button onClick={() => moveToHome()} className='md:text-3xl text-xl text-[#0e8ce4] cursor-pointer font-semibold '>Market</button>
           <div className="flex justify-center items-center">
             <div className="relative md:block hid den">
-              <input type="text" value={search} onChange={e => setSearch(e.target.value)} className="bg-gray-100 h-10 w-32 md:w-64 md:text-xl text-[12px] md:w-96 md:pl-10 md:pr-20 px-4 rounded-lg z-0 focus:shadow focus:outline-none" placeholder="Search anything..." />
+              <input type="text" value={search} onChange={e => setSearch(e.target.value)} className="bg-gray-100 h-10 w-32 md:text-xl text-[12px] md:w-96 md:pl-10 md:pr-20 px-4 rounded-lg z-0 focus:shadow focus:outline-none" placeholder="Search anything..." />
               <div className="absolute top-2 right-2">
                 <button onClick={() => getValue()} className="h-8 md:w-20 w-12 text-white rounded-lg bg-[#0e8ce4] hover:bg-[#057ed4] md:text-sm text-[12px] md:py-[6px] md:px-3 px-1 py-1 -mt-1 show-div">Search
                   <h5 className='absolute hidden top-10 -right-10 bg-gray-100 py-2 px-4 rounded-xl border-[1px] border-[#555] w-64 text-[13px] text-black'>Search With The Name Of Product</h5>

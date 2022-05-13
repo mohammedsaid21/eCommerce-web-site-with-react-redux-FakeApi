@@ -9,10 +9,10 @@ const ContactParts = (props) => {
         </div>
       </div>
         <label className="font-bold text-gray-100 text-lg">
-          Abdelrhman Saeed
+        Mounira 
         </label>
         <label className="font-bold text-gray-100 text-lg">
-          Backend PHP
+          Frontend
         </label>
       <p className="text-center text-gray-200 mt-2 leading-relaxed">
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,

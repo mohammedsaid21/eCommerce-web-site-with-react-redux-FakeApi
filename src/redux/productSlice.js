@@ -6,7 +6,7 @@ export const insertProduct = createAsyncThunk(
     // const { rejectedWithValue } = thunkAPI;
     // JSON.stringify -> convert the normal code into JSON code
     try {
-      const res = await fetch("https://localhostworklaptest.sharedwithexpose.com/work/lap/test/public/api/products", {
+      const res = await fetch("http://localhost:3005/products", {
         method: "POST",
         body: JSON.stringify(product),
         headers: {
@@ -23,20 +23,34 @@ export const insertProduct = createAsyncThunk(
   }
 );
 
-export const getProducts = createAsyncThunk(
+export const getNewDevices = createAsyncThunk(
   "product/getProducts",
-  async (product, thunkAPI) => {
+  async (_ , thunkAPI) => {
     const { rejectedWithValue } = thunkAPI;
     try {
-      const res = await fetch("https://localhostworklaptest.sharedwithexpose.com/work/lap/test/public/api/products");
+      const res = await fetch("http://localhost:3005/hot-sallers");
       const data = await res.json();
-
       return data;
     } catch (error) {
       return rejectedWithValue(error.message);
     }
   }
 );
+
+export const getHotSallers = createAsyncThunk(
+  "product/getProducts",
+  async (_ , thunkAPI) => {
+    const { rejectedWithValue } = thunkAPI;
+    try {
+      const res = await fetch("http://localhost:3005/new-Devices");
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      return rejectedWithValue(error.message);
+    }
+  }
+);
+
 
 // let quantity = 0
 // export const increseTheAmount = createAsyncThunk(
@@ -67,7 +81,8 @@ const productSlice = createSlice({
   name: "product",
   initialState: {
     product: [],
-    products: [],
+    newProducts: [],
+    sallersProducts: [],
     // 
     productsInCart: [],
     totalQuantity: 0,
@@ -156,13 +171,23 @@ const productSlice = createSlice({
   },
   extraReducers: {
     // Get Products
-    [getProducts.pending]: (state, action) => {
+    [getNewDevices.pending]: (state, action) => {
       // console.log(action);
     },
-    [getProducts.fulfilled]: (state, action) => {
-      state.products = action.payload;
+    [getNewDevices.fulfilled]: (state, action) => {
+      state.newProducts = action.payload;
     },
-    [getProducts.rejected]: (state, action) => {
+    [getNewDevices.rejected]: (state, action) => {
+      console.log(action);
+    },
+    // Get Products
+    [getHotSallers.pending]: (state, action) => {
+      // console.log(action);
+    },
+    [getHotSallers.fulfilled]: (state, action) => {
+      state.sallersProducts = action.payload;
+    },
+    [getHotSallers.rejected]: (state, action) => {
       console.log(action);
     },
     // Insert The Proudct

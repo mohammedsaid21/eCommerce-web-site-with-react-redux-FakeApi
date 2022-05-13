@@ -10,8 +10,10 @@ import Search from '../Pages/Search';
 const AnimatedRoutes = () => {
 
   const location = useLocation()
+  
   return (
     <AnimatePresence>
+
       <Routes location={location} key={location.pathname} >
         <Route path='/' exact element={<HomePage />} />
         <Route path='/cartItem' exact element={<CartItem />} />
@@ -19,6 +21,7 @@ const AnimatedRoutes = () => {
         <Route path='/signin' exact element={<SignIn />} />
         <Route path='/search' exact element={<Search />} />
       </Routes>
+
     </AnimatePresence>
   )
 }
