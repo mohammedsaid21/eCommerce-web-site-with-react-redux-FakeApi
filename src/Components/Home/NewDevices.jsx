@@ -10,10 +10,10 @@ const NewDevices = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getNewDevices()) 
+    dispatch(getNewDevices())
+    console.log('useEffect => New Devices  1  ')
   }, [dispatch])
-  
-  console.log(sallersProducts)
+
 
   const handleBuy = (e) => {
     let co = 0
@@ -26,6 +26,7 @@ const NewDevices = () => {
       quantity: co++,
       catogray: e.catogray,
     }))
+    setState(false)
   }
   const [product, setProduct] = useState("")
   const [state, setState] = useState(false)
@@ -43,16 +44,16 @@ const NewDevices = () => {
     <div className="fixed inset-0 z-50 overflow-y-auto">
       <div className="fixed inset-0 w-full h-full bg-black opacity-40" onClick={() => setState(false)}></div>
       <div className="flex items-center min-h-screen px-4 py-8">
-        <div className={`relative w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg  text-center`}>
+        <div className={`relative md:w-1/2 w-[50%] max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg  text-center`}>
           <div className="text-red-800 text-[28px] text-right block">
             <span className='w-full cursor-pointer font-bold' onClick={closeModal}>&times;</span>
           </div>
-          <img className='w-96 h-96 mx-auto object-fit' src={product.imgSrc} alt='' />
-          <h3 className='text-3xl'>{product.title}</h3>
-          <h4 className='text-2xl py-2 font-bold'>${product.price}</h4>
+          <img className='md:w-96 h-24 md:h-96 mx-auto object-fit' src={product.imgSrc} alt='' />
+          <h3 className='md:text-3xl text-xl'>{product.title}</h3>
+          <h4 className='md:text-2xl text-lg py-2 font-bold'>${product.price}</h4>
           <button onClick={() => handleBuy(product)} className='bg-blue-500 text-sm px-7 py-3 text-white rounded-lg transition-all duration-300 hover:bg-blue-700'>Add To Cart</button>
         </div>
-      </div>
+      </div>  
     </div>
 
   return (
@@ -82,12 +83,12 @@ const NewDevices = () => {
           </div>
           {state ? (
             modalProduct
-          ): ''
-        }
+          ) : ''
+          }
         </div>
       </div>
     </>
   )
 }
 
-export default NewDevices
+export default React.memo(NewDevices)

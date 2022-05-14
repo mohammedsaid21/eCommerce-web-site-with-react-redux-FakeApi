@@ -11,7 +11,7 @@ const HeaderImg = () => {
       id: 123,
       title: 'Apple Iphone 6s',
       price: 460,
-      imgSrc: iphone,
+      img: iphone,
       desc: 'NEW ERA OF SMARTPHONES',
       quantity: co++,
       catogray: ''

@@ -79,17 +79,16 @@ body {
 }
 
 .header-fixed {
-  @apply pt-8 fixed top-0 left-0 right-0 bg-white z-[45] transition-all duration-500;
+  @apply pt-8 fixed top-0 left-0 right-0 bg-white z-[45] transition-all duration-500 md:px-[100px];
+  box-shadow: 0px 3px 16px 0px #b7b7b7;
 }
+
 * {
   cursor: url(chrome-extension://ckejmhbmlajgoklhgbapkiccekfoccmk/assets/pictos/cursor.png)
       17 17,
     pointer !important;
 }
 
-.shadow-nav {
-  box-shadow: 0px 3px 16px 0px #b7b7b7;
-}
 
 .position-cart {
   position: fixed;

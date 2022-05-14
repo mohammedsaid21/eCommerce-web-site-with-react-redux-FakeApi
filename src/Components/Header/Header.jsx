@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <div className="shadow-2xl">
       <div className="container mx-auto">
-        <div className="flex md: justify-between mx-auto relative">
+        <div className="flex justify-center md:justify-between mx-auto relative">
           <div className={`md:flex w-1/5 relative hidden  `}>
             <h3 className="bg-[#0e8ce4] w-full transition-all cursor-pointer text-white py-3 px-6 md:flex items-center rounded-md text-[12px] hidden ">
               <ImMenu3 className="md:mr-4 mr-0 text-xl" /> CATEGORIES

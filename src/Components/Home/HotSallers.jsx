@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProductToCart, getHotSallers } from '../../redux/productSlice'
 
 const HotSallers = () => {
 
   const [product, setProduct] = useState("")
+  const [state, setState] = useState(false)
 
   const openModal = (item) => {
     setProduct(item)
     setState(true)
   }
+  //  -------------------->   
 
   const closeModal = () => {
     setState(false)
@@ -20,22 +22,18 @@ const HotSallers = () => {
 
   useEffect(() => {
     dispatch(getHotSallers())
+    console.log("UseEffect =>> Hot Sallers  2  ")
   }, [dispatch])
 
   const handleBuy = (e) => {
     let co = 0
     dispatch(addProductToCart({
-      id: e.id,
-      title: e.title,
-      price: e.price,
-      img: e.imgSrc,
-      desc: e.desc,
-      quantity: co++,
-      catogray: e.catogray,
+      id: e.id, title: e.title, price: e.price,
+      img: e.imgSrc, desc: e.desc, quantity: co++, catogray: e.catogray,
     }))
+    setState(false)
   }
 
-  const [state, setState] = useState(false)
   return (
     <div className='py-[56px] bg-[#eff6fa] '>
       <div className="container mx-auto pt-12">
@@ -69,14 +67,14 @@ const HotSallers = () => {
         <div className="fixed inset-0 z-50 overflow-y-auto">
           <div className="fixed inset-0 w-full h-full bg-black opacity-40" onClick={() => setState(false)}></div>
           <div className="flex items-center min-h-screen px-4 py-8">
-            <div className={`relative w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg  text-center`}>
+            <div className={`relative md:w-1/2 w-[50%] max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg  text-center`}>
               <div className="text-red-800 text-[28px] text-right block">
                 <span className='w-full cursor-pointer font-bold' onClick={closeModal}>&times;</span>
               </div>
-              <img className='w-96 h-96 mx-auto object-fit' src={product.imgSrc} alt='' />
-              <h3 className='text-3xl'>{product.title}</h3>
-              <h4 className='text-2xl py-2 font-bold'>${product.price}</h4>
-              <button onClick={() => handleBuy(product)} className='bg-blue-500 text-sm px-7 py-3 text-white rounded-lg transition-all duration-300 hover:bg-blue-700'>Add To Cart</button>
+              <img className='md:w-96 h-24 md:h-96 mx-auto object-fit' src={product.imgSrc} alt='' />
+              <h3 className='md:text-3xl text-xl'>{product.title}</h3>
+              <h4 className='md:text-2xl text-lg py-2 font-bold'>${product.price}</h4>
+              <button onClick={() => handleBuy(product)} className='bg-blue-500 text-sm md:px-7 md:py-3 py-3 px-2 text-white rounded-lg transition-all duration-300 hover:bg-blue-700'>Add To Cart</button>
             </div>
           </div>
         </div>
@@ -87,4 +85,4 @@ const HotSallers = () => {
   )
 }
 
-export default HotSallers
+export default React.memo(HotSallers);

@@ -10,7 +10,7 @@ const TopNav = () => {
         <div className='flex items-center justify-between'>
           {/*  */}
           <div className='md:[38%] w-[50%] flex items-center'>
-            <p className='w-1/2 text-[12px] md:text-sm'>mounira-86@hotmail.com</p>
+            <p className='w-1/2 text-[12px] md:text-sm'>mohammedsaidaker@hotmail.com</p>
           </div>
           {/*  */}
           <div className='w-1/ md:w-1/3 flex justify-between items-center'>

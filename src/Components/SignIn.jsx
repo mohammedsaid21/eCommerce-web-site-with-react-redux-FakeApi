@@ -6,8 +6,8 @@ import { signIn } from "../redux/productSlice";
 function SignIn() {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('')
-    const [flag, setFlag] = useState(false)
-    const {isSign} = useSelector(state => state.productSlice)
+    // const [flag, setFlag] = useState(false)
+    // const {isSign} = useSelector(state => state.productSlice)
     const dispatch = useDispatch()
 
     const onlySpaces = (str) => str.trim().length > 0

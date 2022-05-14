@@ -1,7 +1,8 @@
 import React, { useRef } from 'react'
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 import ItemInCart from '../Components/ItemCart/ItemInCart'
 import Payment from '../Components/ItemCart/Payment'
 
@@ -48,17 +49,17 @@ const CartItem = () => {
             <h3 className="font-semibold text-center text-gray-600 text-[8px] md:text-xs  uppercase w-1/5 ">Total Price</h3>
           </div>
 
-          {productsInCart.map((item, i) => (
+          {productsInCart.length > 0 ? productsInCart.map((item, i) => (
             <ItemInCart key={i}
               title={item.title}
               price={item.price}
-              imgSrc={item.imgSrc}
+              imgSrc={item.img}
               desc={item.desc}
               quantity={quantity}
               totalPrice={totalPrice}
               total={total}
             />
-          ))}
+          )) : <h2 className='text-3xl text-center py-6'>There Is No Items Plz Add And Back</h2> }
 
           <Link onClick={() => scrollToTop()} to="/" className="flex font-semibold text-indigo-600 text-sm mt-10">
             <svg className="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" /></svg>
@@ -91,6 +92,9 @@ const CartItem = () => {
         </div>
 
       </div>
+
+      <ToastContainer />
+
     </div>
   )
 }

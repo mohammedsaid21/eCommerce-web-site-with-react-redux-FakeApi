@@ -9,7 +9,7 @@ const ModalA = ({ state, setState }) => {
   const [price, setPrice] = useState('')
   const [desc, setDesc] = useState('')
   const [imgSrc, setImgSrc] = useState('')
-  const [category, setCategory] = useState('newDevices')
+  const [category, setCategory] = useState('new-Devices')
 
   // في طريقة تانية انه اعمل اوبجيكت اسميه داتا مثلا واحط جوا عناصر زي التايتل والبرايس والباقيات بس المهم اعرفه جوا ال سبميت انفو
 
@@ -79,8 +79,8 @@ const ModalA = ({ state, setState }) => {
                 <input type="text" placeholder="Img Src" value={imgSrc} onChange={(e) => setImgSrc(e.target.value)}  className={styleInput}/>
                 <input type="text" placeholder="Desc" required value={desc} onChange={(e) => setDesc(e.target.value)} className={styleInput}/>
                 <select ref={selectItem} name="category" id="category">
-                  <option value="newDevices">newDevices</option>
-                  <option value="HotSallers">HotSallers</option>
+                  <option value="new-Devices">newDevices</option>
+                  <option value="Hot-Sallers">HotSallers</option>
                 </select>
               </div>
               <input onClick={submitInfo} type='submit' className="w-full mt-2 p-2.5 flex-1 text-white bg-indigo-600 rounded-md outline-none ring-offset-2 ring-indigo-600 focus:ring-2"/>

@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 export const insertProduct = createAsyncThunk(
   "product/insertProducts",
@@ -6,18 +7,18 @@ export const insertProduct = createAsyncThunk(
     // const { rejectedWithValue } = thunkAPI;
     // JSON.stringify -> convert the normal code into JSON code
     try {
-      const res = await fetch("http://localhost:3005/products", {
+      const res = await fetch(`http://localhost:3005/${product.category}`, {
         method: "POST",
         body: JSON.stringify(product),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
       });
-      console.log(product)
+      console.log(product);
       const data = await res.json();
       return data;
     } catch (error) {
-      return error.message
+      return error.message;
       // return rejectedWithValue(error.message);
     }
   }
@@ -25,7 +26,7 @@ export const insertProduct = createAsyncThunk(
 
 export const getNewDevices = createAsyncThunk(
   "product/getProducts",
-  async (_ , thunkAPI) => {
+  async (_, thunkAPI) => {
     const { rejectedWithValue } = thunkAPI;
     try {
       const res = await fetch("http://localhost:3005/hot-sallers");
@@ -39,7 +40,7 @@ export const getNewDevices = createAsyncThunk(
 
 export const getHotSallers = createAsyncThunk(
   "product/getProducts",
-  async (_ , thunkAPI) => {
+  async (_, thunkAPI) => {
     const { rejectedWithValue } = thunkAPI;
     try {
       const res = await fetch("http://localhost:3005/new-Devices");
@@ -50,7 +51,6 @@ export const getHotSallers = createAsyncThunk(
     }
   }
 );
-
 
 // let quantity = 0
 // export const increseTheAmount = createAsyncThunk(
@@ -83,7 +83,7 @@ const productSlice = createSlice({
     product: [],
     newProducts: [],
     sallersProducts: [],
-    // 
+    //
     productsInCart: [],
     totalQuantity: 0,
     totalPrice: 0,
@@ -104,6 +104,15 @@ const productSlice = createSlice({
         state.totalQuantity++;
         state.productsInCart.push(action.payload);
       }
+      toast.success("The Add Operation Is Done!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     },
     increseQuantity: (state, action) => {
       state.totalQuantity += action.payload;
@@ -126,7 +135,7 @@ const productSlice = createSlice({
         state.totalPrice = 0;
       }
     },
-    // 
+    //
     signIn: (state, action) => {
       state.isSign = action.payload;
     },
@@ -143,31 +152,51 @@ const productSlice = createSlice({
             return object.title === tatgetElement;
           });
           state.productsInCart.splice(indexOfObject, 1);
+          state.totalQuantity -= 1;
+          state.totalPrice -= action.payload.price;
         }
       }
       if (state.productsInCart.length === 0) {
         state.totalQuantity = 0;
       }
+      toast.error("🦄 Delete Done!", {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     },
     // Search
     searchItem: (state, action) => {
       while (state.search.length) {
-        state.search.pop()
+        state.search.pop();
       }
-      const items = state.products
+      const items = [...state.newProducts, ...state.sallersProducts];
+      console.log(items)
       for (let index = 0; index < items.length; index++) {
-        const element = items[index]
-        if(element.title.toLocaleLowerCase().includes(action.payload)) {
-          state.search.push(element)
-        } 
+        const element = items[index];
+        if (element.title.toLocaleLowerCase().includes(action.payload)) {
+          state.search.push(element);
+        }
       }
     },
     sucsessOperation: (state, action) => {
       while (state.productsInCart.length > 0) {
-        state.productsInCart.pop()
+        state.productsInCart.pop();
+        toast.success("🦄 مبارك!", {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
     },
-
   },
   extraReducers: {
     // Get Products
@@ -213,7 +242,7 @@ export const {
   signIn,
   removeItem,
   searchItem,
-  sucsessOperation
+  sucsessOperation,
 } = productSlice.actions;
 export default productSlice.reducer;
 
@@ -221,3 +250,10 @@ export default productSlice.reducer;
 //   o.id === targetItem
 // )
 // state.itemsInCart.splice(indexOfObject, 1);
+
+
+// انا محمد مطور واجهة الأمامية ويب عندي خبرة كبيرة بتمكنني من انه اعمل مواقع بجودة قوية وأداء عالي ومتجاوبة مع جميع الاحجام والي 
+// بتقدر تشوفها من البورتوفوليو الخاص بيا او على القيت هب
+
+// PostgreSQL و نظام إدارة قواعد البيانات علائقي يعتمد التعامل معه على لغة إس كيو إل، يعمل على منصات متعددة من مثل أنظمة التشغي
+// غو ‏ هي لغة برمجة مفتوحة المصدر من تطوير شركة جوجل. التصميم الأول للغة 

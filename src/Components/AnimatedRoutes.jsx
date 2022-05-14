@@ -13,7 +13,6 @@ const AnimatedRoutes = () => {
   
   return (
     <AnimatePresence>
-
       <Routes location={location} key={location.pathname} >
         <Route path='/' exact element={<HomePage />} />
         <Route path='/cartItem' exact element={<CartItem />} />

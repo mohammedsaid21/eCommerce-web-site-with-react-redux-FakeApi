@@ -11,7 +11,7 @@ const SliderSaller = () => {
       id: 213,
       title: 'MacBook Air 13',
       price: 1500,
-      imgSrc: 'https://i.guim.co.uk/img/media/7579016f06c6636943e2739c712ca52cb8dc44ad/0_333_5080_3048/master/5080.jpg?width=620&quality=85&auto=format&fit=max&s=54b051a18bf39d55ff3defe76501ef41',
+      img: 'https://i.guim.co.uk/img/media/7579016f06c6636943e2739c712ca52cb8dc44ad/0_333_5080_3048/master/5080.jpg?width=620&quality=85&auto=format&fit=max&s=54b051a18bf39d55ff3defe76501ef41',
       desc: 'Lorem ipsum, dolor sit ams necessit asd adsdsasda atibus Anin fadsk saja',
       quantity: co++,
       catogray: '',

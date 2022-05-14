@@ -51,20 +51,23 @@ const NavBar = () => {
       behavior: 'smooth' // for smoothly scrolling
     });
   };
-  
+
   // setHideBtn('hidden')
 
   useEffect(() => {
     window.addEventListener("scroll", scrollAnimation);
-    if (productsInCart.length > 0) { 
-     setShowCart('cart-product');
-     setHideBtn('')
+    if (productsInCart.length > 0) {
+      setShowCart('cart-product');
+      setTimeout(() => {
+        setShowCart('hidden')
+      }, 3000);
+      setHideBtn('')
     }
     return () => window.removeEventListener('scroll', scrollAnimation)
   }, [productsInCart.length]);
 
   const getValue = (e) => {
-    const onlySpaces = (str) => str.trim().length > 0
+    const onlySpaces = (str) => str.trim().length < 0
     if (search !== '' && onlySpaces(search)) {
       dispatch(searchItem(search))
       nav('/search')
@@ -79,11 +82,11 @@ const NavBar = () => {
       <div className='container mx-auto py-8'>
         {/* Logo */}
 
-        <div className={`flex items-center justify-between w -[80%] md:w-full py-5 px-4 md:px-[94px] ${fixed}`}>
+        <div className={`flex items-center justify-between w -[80%] md:w-full py-5 px-4 ${fixed}`}>
           <button onClick={() => moveToHome()} className='md:text-3xl text-xl text-[#0e8ce4] cursor-pointer font-semibold '>Market</button>
           <div className="flex justify-center items-center">
             <div className="relative md:block hid den">
-              <input type="text" value={search} onChange={e => setSearch(e.target.value)} className="bg-gray-100 h-10 w-32 md:text-xl text-[12px] md:w-96 md:pl-10 md:pr-20 px-4 rounded-lg z-0 focus:shadow focus:outline-none" placeholder="Search anything..." />
+              <input type="text" value={search} onChange={e => setSearch(e.target.value)} className="bg-gray-100 h-10 w-40 md:text-sm text-[12px] md:w-[340px] md:pl-10 md:pr-20 px-4 rounded-lg z-0 focus:shadow focus:outline-none" placeholder="Search anything..." />
               <div className="absolute top-2 right-2">
                 <button onClick={() => getValue()} className="h-8 md:w-20 w-12 text-white rounded-lg bg-[#0e8ce4] hover:bg-[#057ed4] md:text-sm text-[12px] md:py-[6px] md:px-3 px-1 py-1 -mt-1 show-div">Search
                   <h5 className='absolute hidden top-10 -right-10 bg-gray-100 py-2 px-4 rounded-xl border-[1px] border-[#555] w-64 text-[13px] text-black'>Search With The Name Of Product</h5>
@@ -102,14 +105,14 @@ const NavBar = () => {
                   </svg>
                   <span className="absolute right-0 top-0 rounded-full bg-[#0e8ce4] w-[18px] h-[18px] top right p-0 m-0 text-white font-mono text-sm leading-tight text-center"> {productsInCart.length > 0 ? totalQuantity : 0} </span>
                 </button>
-<div className={`${showCart}`} >
-                  <span onClick={() => setShowCart('hidden') } className={`text-2xl font-bold cursor-pointer ${hideBtn} `}> &times; </span>
+                <div className={`${showCart}`} >
+                  <span onClick={() => setShowCart('hidden')} className={`text-2xl font-bold cursor-pointer ${hideBtn} `}> &times; </span>
                   {
                     productsInCart.map(item => (
                       <div key={item.id}>
                         <h3>{item.title}</h3>
                         <h5>{item.price}</h5>
-                        <img src={item.imgSrc} alt='' />
+                        <img src={item.img} alt='' />
                       </div>
                     ))
                   }
