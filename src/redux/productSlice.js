@@ -1,22 +1,25 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { useCallback } from "react";
 import { toast } from "react-toastify";
 
 export const insertProduct = createAsyncThunk(
+  
   "product/insertProducts",
   async (product, thunkAPI) => {
     // const { rejectedWithValue } = thunkAPI;
     // JSON.stringify -> convert the normal code into JSON code
     try {
-      const res = await fetch(`http://localhost:3005/${product.category}`, {
-        method: "POST",
-        body: JSON.stringify(product),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      });
-      console.log(product);
-      const data = await res.json();
-      return data;
+      // const res = await fetch(`http://localhost:3005/${product.category}`, {
+      //   method: "POST",
+      //   body: JSON.stringify(product),
+      //   headers: {
+      //     "Content-type": "application/json; charset=UTF-8",
+      //   },
+      // });
+      // console.log(product);
+      // const data = await res.json();
+      // return data;
+      console.log("Soon !!")
     } catch (error) {
       return error.message;
       // return rejectedWithValue(error.message);
@@ -29,7 +32,7 @@ export const getNewDevices = createAsyncThunk(
   async (_, thunkAPI) => {
     const { rejectedWithValue } = thunkAPI;
     try {
-      const res = await fetch("http://localhost:3005/hot-sallers");
+      const res = await fetch("https://fake-server-ecommerce.herokuapp.com/new-Devices");
       const data = await res.json();
       return data;
     } catch (error) {
@@ -43,7 +46,7 @@ export const getHotSallers = createAsyncThunk(
   async (_, thunkAPI) => {
     const { rejectedWithValue } = thunkAPI;
     try {
-      const res = await fetch("http://localhost:3005/new-Devices");
+      const res = await fetch("https://fake-server-ecommerce.herokuapp.com/hot-sallers");
       const data = await res.json();
       return data;
     } catch (error) {
@@ -175,7 +178,6 @@ const productSlice = createSlice({
         state.search.pop();
       }
       const items = [...state.newProducts, ...state.sallersProducts];
-      console.log(items)
       for (let index = 0; index < items.length; index++) {
         const element = items[index];
         if (element.title.toLocaleLowerCase().includes(action.payload)) {

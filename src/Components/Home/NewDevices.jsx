@@ -11,9 +11,9 @@ const NewDevices = () => {
 
   useEffect(() => {
     dispatch(getNewDevices())
-    console.log('useEffect => New Devices  1  ')
   }, [dispatch])
 
+  // console.log('useEffect => New Devices  1  ')
 
   const handleBuy = (e) => {
     let co = 0

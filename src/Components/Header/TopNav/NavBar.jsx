@@ -31,7 +31,6 @@ const NavBar = () => {
     }
   }
 
-
   const moveToHome = () => {
     navigateToHome('/')
     scrollToTop()
@@ -51,9 +50,7 @@ const NavBar = () => {
       behavior: 'smooth' // for smoothly scrolling
     });
   };
-
   // setHideBtn('hidden')
-
   useEffect(() => {
     window.addEventListener("scroll", scrollAnimation);
     if (productsInCart.length > 0) {
@@ -67,7 +64,7 @@ const NavBar = () => {
   }, [productsInCart.length]);
 
   const getValue = (e) => {
-    const onlySpaces = (str) => str.trim().length < 0
+    const onlySpaces = (str) => str.trim().length > 0
     if (search !== '' && onlySpaces(search)) {
       dispatch(searchItem(search))
       nav('/search')

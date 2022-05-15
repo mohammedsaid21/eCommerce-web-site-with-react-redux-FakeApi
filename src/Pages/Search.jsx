@@ -21,7 +21,7 @@ const Search = () => {
       id: e.id,
       title: e.title,
       price: e.price,
-      imgSrc: e.imgSrc,
+      img: e.img,
       desc: e.desc,
       quantity: co++,
       catogray: e.catogray,

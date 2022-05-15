@@ -22,8 +22,9 @@ const HotSallers = () => {
 
   useEffect(() => {
     dispatch(getHotSallers())
-    console.log("UseEffect =>> Hot Sallers  2  ")
   }, [dispatch])
+
+  // console.log("UseEffect =>> Hot Sallers  2  ")
 
   const handleBuy = (e) => {
     let co = 0
