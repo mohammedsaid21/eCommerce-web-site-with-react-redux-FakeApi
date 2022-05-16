@@ -14,10 +14,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 </ul>
 
 
-<img src='/image/Screenshot 2022-05-02 at 00-24-32 React App.png' alt='' />
-<img src='/image/Screenshot 2022-05-02 at 00-24-54 React App.jpg' alt='' />
-<img src='/image/Screenshot 2022-05-02 at 00-25-11 React App.png' alt='' />
-<img src='/image/Screenshot 2022-05-02 at 00-30-14 React App.png' alt='' />
+<img src='/image/home.jpg' alt='' />
+<img src='/image/modal.jpg' alt='' />
+<img src='/image/searchPage.jpg' alt='' />
+<img src='/image/CartPage.jpg' alt='' />
 
 
 ## Available Scripts
